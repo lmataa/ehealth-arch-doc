@@ -9,3 +9,8 @@ Práctica de Arquitectura y Diseño Software de la ETSISI, UPM, Madrid 3º Curso
 * Imágenes, diagramas y otros recursos (**finales**), es conveniente dejarlos en este repositorio. 
     * Imágenes formato png ya recortadas y nombradas por orden de aparición.
     * Diagramas dejar el esquema original y usar draw.io para poder modificarlo.
+    
+## Faltan
+
+* Subir el punto 1 - 3
+
