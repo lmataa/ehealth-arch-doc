@@ -1,7 +1,8 @@
 ---
 title: "Documentación de una arquitectura"
 titlepage: "True"
-author: [Luis Mata Aguilar (bm0613)]
+date: 02-04-2019
+author: [Luis Mata Aguilar, ]
 ...
 
 # Documentando la Arquitectura
@@ -9,6 +10,18 @@ author: [Luis Mata Aguilar (bm0613)]
 ## 1. Introducción
 
 ### 1.1 Descripción general del problema
+
+Bien es sabido que en Madrid, desde el 1 de febrero de 2016, se han implantado protocolos de actuación debido a la contaminación atmosférica, situándose ésta como un [problema de salud pública](https://diario.madrid.es/blog/2016/02/03/la-contaminacion-atmosferica-un-grave-problema-de-salud-publica/) en el que se invierten una cantidad desmesurada de recursos.
+
+Se trata de un sistema eHealth en el contexto de Madrid entendida como una ciudad inteligente, teniendo en cuenta el Plan de acción sobre la salud electrónica 2012-2020: antención sanitaria innovadora para el siglo XXI (Comisión europea).
+
+Para mejorar cuestiones de salud pública y converger con las cuestiones planteadas en los planes de accion europeos sobre la salud electrónica, se pretende diseñar un sistema que incluya un control normalizado de estos índices y que permita alertar a la ciudadanía.
+
+Para conciliar las ideas propuestas en dicho plan, el sistema pretende facilitar el trato con pacientes permitiendo cosultas mediante vía telemática; diagnóstico remoto de enfermedades con perfil establecido; tratamiento de enfermedades terminales o crónicas así como monitoreo de las mismas mediante el uso de tecnologías IoT; avisos de rigesgos de salud pública con un sistema de alertas personalizables (alérgenos, nivel de contaminación); categorización y estudio de enfermedades a nivel de población, de forma que la investigación se vea explícitamente favorecida.
+
+En cuanto a las comunicaciones telemáticas, el sistema contará con aplicaciones cliente a las que los ciudadanos podrán conectarse y ligar a su centro médico o seguro sanitario. En caso de tratarse de un paciente que requiera de un seguimiento personalizado, obtendrá una extensión del cliente, que le permitirá, junto con un pequeño equipo de sensores IoT, ser susceptible de monitoreo y seguimineto por los especialistas médicos que le estén tratando. Mejorando de esta forma la calidad de vida tanto del paciente terminar o crónico como la del doctor especialista, elevando la sostenibilidad de recursos públicos de Madrid, así como de recursos humanos en centros médicos y hospitales.
+
+En caso de haber parámetros en el seguimiento de estos pacientes fuera del rango esperado, se categorizará la urgencia de la anomalía y en caso de ser urgente, una ambulancia (ahora equipada con dispositivos IoT que las conecten al sistema) se dirigirá a la ubicación del sensor. Los datos, anomalías e incidencias serán comprobados a varios niveles de redundacia para resolver cualquier tipo de inconsistencia.
 
 
 
