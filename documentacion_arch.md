@@ -49,4 +49,28 @@ En caso de haber parámetros en el seguimiento de estos pacientes fuera del rang
 
 ## 2. Stakeholders
 
+## 3. Atributos de calidad
+
+### 3.1 Descripción de los atributos de calidad más importantes y su priorización justificada
+
+### 3.2 Árbol de utilidad
+
+Atributo de calidad       | Atributo refinado          | ASR
+---| --- | ---
+ Disponibilidad | Aplicación siempre operativa | Como cliente necesito que la aplicación        esté siempre operativa para poder resolver dudas puntuales y consultas personales vía telemática.
+ - | Sistema crítico | Como de la aplicación depende vidas humanas, debemos mantener un plan alternativo en caso de un fallo crítico del sistema.
+ - | Datos de los pacientes | Como la aplicación toma decisiones usando los parámetros de los pacientes, los dispositivos de los pacientes deben estar actualizando sus parámetros en la base datos y a su vez la base de datos debe estar disponible para que los especialistas sanitarios puedan leer esta información.
+ Usabilidad    |   duda(meter funciones que hace la aplicación)  |
+ Seguridad |   Integridad de los datos   |   Como cliente necesito que la seguridad de los datos (tanto de los pacientes como de los especialistas) sea íntegra para evitar problemas con los usuarios.
+ - | Restricción al acceso de los datos | Como cliente necesito que exista una restricción al acceso de los datos para aumentar la seguridad de la aplicación y de los usuarios.
+ Interoperabilidad |  |
+ Portabilidad | Disponibilidad en distintos sistemas operativos y dispositivos |  Como cliente necesito que la aplicación sea usable desde diferentes dispositivos independientemente del sistema operativo utilizado.
+ Testabilidad | Capacidad del sistema para ser probado | Como cliente necesito que el sistema se pueda probar de forma sencilla para evitar y/o solucionar posibles errores.
+ Mantenibilidad | Cambios en el sistema | Como cliente necesito que se puedan realizar cambios para poder mejorar la aplicación.
+ Rendimiento | Funcionalidad correcta en tiempos de respuesta cortos | La aplicación deberá funcionar con una respuesta rápida entre sus módulos.
+ Modificabilidad | Actualización de los parámetros recogidos de los pacientes | Como cliente necesito que el sistema pueda actualizar los datos de los pacientes.
+ - | Actualización de los parámetros que establecen los especialistas sanitarios | Se actualizará la información relativa a tratamientos, medicamentos, fármacos…
+ - | Actualización de los niveles de contaminación y alérgenos | El sistema tiene que ser capaz de actualizar la información referente a los niveles de contaminación y alérgenos de la ciudad.
+ Escalabilidad | Soporte de varios usuarios simultaneamente | El sistema deberá soportar que grandes cantidades de usuarios accedan simultaneamente sin problema y con alto rendimiento.
+ Forma de venta(marketing) | Alta distribución de información acerca del sistema | Como cliente quiero que el sistema sea usado por el mayor número de usuarios ya que mejora considerablemente su nivel de vida y por ello se necesita que el sistema y sus beneficios sea conocido por el mayor número de personas.
 
