@@ -196,33 +196,13 @@ En el diagrama se pueden observar 14 clases distintas:
 
 #### 4.2.5 Rationale
 
-### 4.3 Vista de Implementación 
+### 4.3 Vista de desarrollo 
 
 #### 4.3.1 Descripción
 
-La vista de desarrollo ilustra un sistema desde la perspectiva de un programador y se ocupa de la administración del software. Esta vista también se conoce como la vista de implementación.
+El punto de vista de la implementación se centra en la organización de los módulos de software reales en el entorno de desarrollo de software
 
-#### 4.3.2 Notación
-
-
-    
- ![ Diagrama ](01.png)
-     
- ![ De ](01.png)
-     
- ![Desarrollo ](01.png)
-
-#### 4.3.3 Vista
-
-#### 4.3.4 Catálogo
-
-#### 4.3.5 Rationale
-
-## 4.3 Vista de implementación
-
-#### 4.3.1 Descripción
-
-Un diagrama de implementación en Unified Modeling Language modela la implementación física de artefactos en nodos. 
+El software está empaquetado en trozos pequeños (bibliotecas de programas o subsistemas) que pueden ser desarrollados por uno o más desarrolladores.
 
 #### 4.3.2 Notación
 
@@ -255,11 +235,12 @@ En dicha vista reflejamos los nodos de Servidor BIG DATA, CEP, Servidor aplicaci
 Esta vista se ve afectada por diferentes atributos de calidad que hemos definido antes:
 
 
-### 4.3 Vista de despliegue 
+### 4.4 Vista de despliegue 
 
-#### 4.3.1 Descripción
+#### 4.4.1 Descripción
+Un diagrama de implementación en Unified Modeling Language modela la implementación física de artefactos en nodos.
 
-#### 4.3.2 Notación
+#### 4.4.2 Notación
 
 
     
@@ -267,13 +248,13 @@ Esta vista se ve afectada por diferentes atributos de calidad que hemos definido
      
  ![ De ](01.png)
      
- ![Desarrollo ](01.png)
+ ![Despliegue ](01.png)
 
-#### 4.3.3 Vista
+#### 4.4.3 Vista
 
-#### 4.3.4 Catálogo
+#### 4.4.4 Catálogo
 
-#### 4.3.5 Rationale
+#### 4.4.5 Rationale
 
 ### 4.5 Escenarios
 
