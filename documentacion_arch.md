@@ -196,13 +196,21 @@ En el diagrama se pueden observar 14 clases distintas:
 
 #### 4.2.5 Rationale
 
-### 4.3 Vista de desarrollo 
+### 4.3 Vista de Implementación 
 
 #### 4.3.1 Descripción
 
-En ella se tratan los componentes y archivos que se han usado para hacer posible el sistema físico de la aplicación. Gracias a ello, se ayuda a controlar las configuraciones de las distintas versiones del sistema.
+La vista de desarrollo ilustra un sistema desde la perspectiva de un programador y se ocupa de la administración del software. Esta vista también se conoce como la vista de implementación.
 
 #### 4.3.2 Notación
+
+
+    
+ ![ Diagrama ](01.png)
+     
+ ![ De ](01.png)
+     
+ ![Desarrollo ](01.png)
 
 #### 4.3.3 Vista
 
@@ -210,17 +218,62 @@ En ella se tratan los componentes y archivos que se han usado para hacer posible
 
 #### 4.3.5 Rationale
 
-## 4.4 Vista de despliegue
+## 4.3 Vista de implementación
 
-#### 4.4.1 Descripción
+#### 4.3.1 Descripción
 
-#### 4.4.2 Notación
+Un diagrama de implementación en Unified Modeling Language modela la implementación física de artefactos en nodos. 
 
-#### 4.4.3 Vista
+#### 4.3.2 Notación
 
-#### 4.4.4 Catálogo
+#### 4.3.3 Vista
 
-#### 4.4.5 Rationale
+![Vista implementación](vista_deploy.png)
+
+#### 4.3.4 Catálogo
+
+En dicha vista reflejamos los nodos de Servidor BIG DATA, CEP, Servidor aplicación, Sensores, Broker, Médicos, Servidor open data y Pacientes. 
+
+- Nodo Servidor BIG DATA: 
+
+- Nodo CEP:
+
+- Nodo Servidor aplicación:
+
+- Nodo Sensores: 
+
+- Nodo Broker:
+
+- Nodo Médicos:
+
+- Nodo Servidor open data:
+
+- Nodo Pacientes:
+
+#### 4.3.5 Rationale
+
+Esta vista se ve afectada por diferentes atributos de calidad que hemos definido antes:
+
+
+### 4.3 Vista de despliegue 
+
+#### 4.3.1 Descripción
+
+#### 4.3.2 Notación
+
+
+    
+ ![ Diagrama ](01.png)
+     
+ ![ De ](01.png)
+     
+ ![Desarrollo ](01.png)
+
+#### 4.3.3 Vista
+
+#### 4.3.4 Catálogo
+
+#### 4.3.5 Rationale
 
 ### 4.5 Escenarios
 
@@ -238,9 +291,47 @@ En ella se tratan los componentes y archivos que se han usado para hacer posible
 
 ### 5.1 Entrevistas
 
+#### 5.1.1
+
+#### 5.1.2
+
+#### 5.1.3
+
+#### 5.1.4
+
+#### 5.1.5
+
+#### 5.1.6
+
+#### 5.1.7
+
 ### 5.2 Entre Business Goals y vistas
 
+
+ Business goal | Vista lógica | Vista de procesos | Vista de desarrollo | Vista de despliegue | Vista de escenarios
+--- | --- | --- | --- | --- | ---
+ BG1 |   |   |   |   |   
+ BG2 |
+ BG3 | 
+ BG4 |
+ BG5 |
+ BG6 |
+ BG7 |
+
 ### 5.3 Entre atributos de calidad y vistas
+
+Atributos de calidad | Vista lógica | Vista de procesos | Vista de desarrollo | Vista de despliegue | Vista de escenarios
+--- | --- | --- | --- | --- | ---
+Disponibilidad |   |   |   |   |   
+Usabilidad |
+Seguridad |
+Interoperabilidad |
+Rendimiento |
+Escalabilidad |
+Portabilidad |
+Mantenibilidad |
+Modificabilidad |
+
 
 ## 6. Conclusiones
 
