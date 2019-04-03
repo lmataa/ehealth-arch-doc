@@ -127,6 +127,11 @@ Para el orden de prioridad se ha usado la técnica de **dote-voting**.
 
 ## 4. Vistas arquitectónicas
 
+Ahora vamos a mostrar cada vista correspondiente al modelo de vistas arquitectónicas 4+1 de Philippe Krunchten.
+Hemos obtenido cada vista del modelo Krunchten de un modelo conceptual a mayor nivel de abstracción para poder integrar cada parte. En él se puede reconocer el uso de patrones arquitectónicos que más adelante se plasmarán en todas las vistas según corresponda. En concreto podemos hablar del Brooker de contexto, que será cuello de botella de nuestro sistema ya que se encargará de la orquestación de servicios y datos; o de la arquitectura dirigida por eventos del sistema de procesamiento de eventos complejo que se encargará de capturar eventos de emergencia detectados en el Brooker.
+
+![Diagrama de contexto de alto nivel](vista_contexto.png)
+
 ### 4.1 Vista lógica
 
 #### 4.1.1 Descripción
