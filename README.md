@@ -12,5 +12,5 @@ Práctica de Arquitectura y Diseño Software de la ETSISI, UPM, Madrid 3º Curso
     
 ## Faltan
 
-* Subir el punto 1 - 3
+* Subir a partir del punto 4
 
