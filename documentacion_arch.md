@@ -11,15 +11,13 @@ author: [Luis Mata Aguilar, ]
 
 ### 1.1 Descripción general del problema
 
-Bien es sabido que en Madrid, desde el 1 de febrero de 2016, se han implantado protocolos de actuación debido a la contaminación atmosférica, situándose ésta como un [problema de salud pública](https://diario.madrid.es/blog/2016/02/03/la-contaminacion-atmosferica-un-grave-problema-de-salud-publica/) en el que se invierten una cantidad desmesurada de recursos.
+En Madrid, desde el 1 de febrero de 2016, se han implantado protocolos de actuación debido a la contaminación atmosférica, situándose ésta como un [problema de salud pública](https://diario.madrid.es/blog/2016/02/03/la-contaminacion-atmosferica-un-grave-problema-de-salud-publica/) en el que se invierten una cantidad desmesurada de recursos.
 
-Se trata de un sistema eHealth en el contexto de Madrid entendida como una ciudad inteligente, teniendo en cuenta el Plan de acción sobre la salud electrónica 2012-2020: antención sanitaria innovadora para el siglo XXI (Comisión europea).
-
-Para mejorar cuestiones de salud pública y converger con las cuestiones planteadas en los planes de accion europeos sobre la salud electrónica, se pretende diseñar un sistema que incluya un control normalizado de estos índices y que permita alertar a la ciudadanía.
+Se propone la construcción de un sistema eHealth en el contexto de Madrid entendida como una ciudad inteligente, teniendo en cuenta el Plan de acción sobre la salud electrónica 2012-2020: antención sanitaria innovadora para el siglo XXI (Comisión europea).
 
 Para conciliar las ideas propuestas en dicho plan, el sistema pretende facilitar el trato con pacientes permitiendo cosultas mediante vía telemática; diagnóstico remoto de enfermedades con perfil establecido; tratamiento de enfermedades terminales o crónicas así como monitoreo de las mismas mediante el uso de tecnologías IoT; avisos de rigesgos de salud pública con un sistema de alertas personalizables (alérgenos, nivel de contaminación); categorización y estudio de enfermedades a nivel de población, de forma que la investigación se vea explícitamente favorecida.
 
-En cuanto a las comunicaciones telemáticas, el sistema contará con aplicaciones cliente a las que los ciudadanos podrán conectarse y ligar a su centro médico o seguro sanitario. En caso de tratarse de un paciente que requiera de un seguimiento personalizado, obtendrá una extensión del cliente, que le permitirá, junto con un pequeño equipo de sensores IoT, ser susceptible de monitoreo y seguimineto por los especialistas médicos que le estén tratando. Mejorando de esta forma la calidad de vida tanto del paciente terminar o crónico como la del doctor especialista, elevando la sostenibilidad de recursos públicos de Madrid, así como de recursos humanos en centros médicos y hospitales.
+En cuanto a las comunicaciones telemáticas, el sistema contará con aplicaciones cliente a las que los ciudadanos podrán conectarse y ligar a su centro médico o seguro sanitario. En caso de tratarse de un paciente que requiera de un seguimiento personalizado, obtendrá una extensión del cliente, que le permitirá, junto con un pequeño equipo de sensores IoT, ser susceptible de monitoreo y seguimineto por los especialistas médicos que le estén tratando. Mejorando de esta forma la calidad de vida tanto del paciente terminal o crónico como la del doctor especialista, elevando la sostenibilidad de recursos públicos de Madrid en sanidad, así como de recursos humanos en centros médicos y hospitales.
 
 En caso de haber parámetros en el seguimiento de estos pacientes fuera del rango esperado, se categorizará la urgencia de la anomalía y en caso de ser urgente, una ambulancia (ahora equipada con dispositivos IoT que las conecten al sistema) se dirigirá a la ubicación del sensor. Los datos, anomalías e incidencias serán comprobados a varios niveles de redundacia para resolver cualquier tipo de inconsistencia.
 
@@ -43,13 +41,21 @@ En caso de haber parámetros en el seguimiento de estos pacientes fuera del rang
     - Niveles de contaminación auditiva por zonas.
     - Niveles de alérgenos **personalizados** en la ciudad.
 
-- Información y estadísticas derivadas del uso del servicio por todos los usuarios del sistema (respetando la LOPD, serán datos no personales). Se pretende ayudar a la investigación de enfermedades y tratamientos así como respuesta al entorno por parte de la ciudad para analizar situaciones de salud pública. De forma que los médicos que dispongan de las autorizaciones convenientes, puedan ver estos resultados para realizar estadísticas e instituciones sanitarias puedan llevar investigaciones de salud pública.
+- Información y estadísticas derivadas del uso del servicio por todos los usuarios del sistema (respetando la LOPD, serán datos no personales). Se pretende ayudar a la investigación de enfermedades y tratamientos así como respuesta al entorno por parte de la ciudad para analizar situaciones de salud pública. De forma que los doctores especialistas así como instituciones pertinentes que dispongan de autorización, puedan ver estos resultados para realizar I+D+i sobre salud pública.
 
 ### 1.3 Business Drivers
 
+
+
+
 ## 2. Stakeholders
 
+
 ## 3. Atributos de calidad
+
+Atributo de calidad | Prioridad | Justificación
+---| --- | ---
+
 
 ### 3.1 Descripción de los atributos de calidad más importantes y su priorización justificada
 
