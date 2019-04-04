@@ -187,14 +187,33 @@ En el diagrama se pueden observar 14 clases distintas:
 ### 4.2 Vista de procesos
 
 #### 4.2.1 Descripción
+La vista de procesos representa los flujos de trabajo paso a paso de sistema, mostrando como las abstracciones principales de la vista lógica interactúan entre sí. Aborda aspectos de concurrencia en tiempo de ejecución, distribución, integridad del sistema y tolerancia a fallos. 
+  
+Puede ser descrita como un conjunto de redes lógicas de procesos que son ejecutados de forma independiente, y distribuidos a lo largo de varios recursos de hardware conectados mediante un bus o a una red de datos. 
 
 #### 4.2.2 Notación
 
+Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los siguiente elementos
+
+![Nodo inicial](01.png)
+
+![Acción](01.png)
+
+![Fujo o transición](01.png)
+
+![Nodo final](01.png)
+
 #### 4.2.3 Vista
+
+![Vista de procesos](01.png)
 
 #### 4.2.4 Catálogo
 
+
+
 #### 4.2.5 Rationale
+
+
 
 ### 4.3 Vista de desarrollo 
 
@@ -206,6 +225,12 @@ El software está empaquetado en trozos pequeños (bibliotecas de programas o su
 
 #### 4.3.2 Notación
 
+![Componente](01.png)
+  
+![Nodo físico](01.png)
+  
+![Comunicación entre nodos](01.png)
+
 #### 4.3.3 Vista
 
 ![Vista implementación](dev_view.png)
@@ -214,26 +239,37 @@ El software está empaquetado en trozos pequeños (bibliotecas de programas o su
 
 En dicha vista reflejamos los nodos de Servidor BIG DATA, CEP, Servidor aplicación, Sensores, Broker, Médicos, Servidor open data y Pacientes. 
 
-- Nodo Servidor BIG DATA: Se guardan los diferentes datos y bases de datos con tecnología clustering y data warehouse. Se pretende que el mainfraime sea capaz de procesar los datos sin necesidad de migrarlos a otros nodos de forma que otros servicios puedan acceder con menor carga de procesamiento a datos más específicos y no personales, como es el caso de la plataforma open-data.
+- **Nodo Servidor BIG DATA**: Se guardan los diferentes datos y bases de datos con tecnología clustering y data warehouse. Se pretende que el mainfraime sea capaz de procesar los datos sin necesidad de migrarlos a otros nodos de forma que otros servicios puedan acceder con menor carga de procesamiento a datos más específicos y no personales, como es el caso de la plataforma open-data. Se les aplicará algoritmos de machine learning para analizar los datos y evaluar el sistema.
 
-- Nodo CEP: Los dispositivos IoT envían eventos al context Brooker, el cual 
+- **Nodo CEP**: Los dispositivos IoT envían eventos al context Brooker, el cual procesa las comunicaciones del sistema. Allí los eventos catalogados como de emergencia se encauzarán con prioridad al nodo CEP. Éste procesará las diferencias y tratará las direcciónes para las comunicaicones con las ambulancias. Se mantendrá operativo 24h al tratarse de un servicio de emergencia, por que se trata de procesamiento crítico basado en eventos. Supone una carga de peso menos para el brooker y permite que el sistema sea más seguro, íntegro, desacoplado y eficiente con las peticiones de datos.
 
-- Nodo Servidor aplicación:
+- **Nodo Servidor aplicación**: Se encarga de mostrar el servicio oportuno para cada tipo de cliente. En primer lugar encauza las comunicaicones urgentes de ambulancia, muestra las vistas de médico especialista para el seguimiento de datos, y las de pacientes de cada tipo de forma que puedan recibir notificaciones y hacer peticiones a la base de datos principal.
 
-- Nodo Sensores: 
+- **Nodo Sensores**: El nodos sensores corresponde con los servidores medioambientales de Madrid donde accedemos para descargarnos los indicadores de contaminación. Corresponde con el grupo de prioridad 5.
 
-- Nodo Broker:
+- **Nodo Broker**: Posee la orquestación de las peticiones de datos al servidor de Big Data, gestiona la actualización de datos de las aplicaciones cliente, encamina las comunicaciones de emergencia al CEP. Orquesta datos IoT de los servidores de Madrid.
 
-- Nodo Médicos:
+- **Nodo Médicos**: Nodo final del sistema donde se conectan los médicos. Corresponde con el grupo de prioridad 3.
 
-- Nodo Servidor open data:
+- **Nodo Servidor Open Data**: Nodo final del sistema que corresponde a un servicio web Open Data basad en CKAN.
 
-- Nodo Pacientes:
+- **Nodo Pacientes**: Nodo final del sistema donde se conectan los pacientes, tanto los correspondientes al grupo de prioridad 1 como el grupo de prioridad 2.
+
+- **Nodo Ambulancia**: Nodo final del sistema donde se conectan las ambulancias.
 
 #### 4.3.5 Rationale
 
 Esta vista se ve afectada por diferentes atributos de calidad que hemos definido antes:
 
+ 1. La disponibilidad en tiempo real en esta vista se ve representada en la implementación del CEP ya que con un patrón de eventos, tratará los eventos de emergencia con prioridad sobre las otras peticiones del sistema. Esto satisface a este atributo de calidad.
+ 
+2. La disponibilidad general será limitada a una franja horaria de forma que al ser una arquitectura distribuida y de eventos, solo habrá que no tratar ciertas peticiones que no sean de emergencia dentro del rango horario, lo cual también esá contemplad al haber desacoplado el procesamiento de eventos de emergencia del brooker principal que es donde se encuentra el cuello de botella del sistema.
+
+3. Las comunicaciones del sistema están cifradas y solo el Broker sabe a donde dirigir los datos. Esto permite tratar con integridad y consistencia todos los datos personales que maneja el sistema.
+
+4. El rendimiento no es especialmente importante en cuanto a peticiones de histórico de datos solo en las de emergencia y en el establecimiento de conexiones multimedia de cada usuario. Para lo cual se contemplan módulos de procesamiento en tiempo real dentro del paquete software del broker.
+
+5. Escalabilidad: El sistema contempla la escalabilidad desde su centro de procesos principales que es el broker. Al pasar todas las comunicaciones por este medio, para incluir otras nuevas solo habría que permitir al broker otro tipo de peticiones e incluir una nueva aplicación cliente en el servidor de aplicaciones.
 
 ### 4.4 Vista de despliegue 
 
@@ -242,27 +278,68 @@ Un diagrama de implementación en Unified Modeling Language modela la implementa
 
 #### 4.4.2 Notación
 
-
     
- ![ Diagrama ](01.png)
+![Base de datos ](bd.png){height=8%}
      
- ![ De ](01.png)
+![Servidor ](sv.png){height=8%} 
      
- ![Despliegue ](01.png)
+![Cliente ](cl.png){height=8%} 
+    
+![Internet](int.png){height=8%} 
+    
+![Servidor CEP](cep.png){height=8%} 
 
 #### 4.4.3 Vista
 
+![Vista de despliegue](deployment_view.png)
+
 #### 4.4.4 Catálogo
 
+- **Internet**: Representa la conexión de los dispositivos a internet
+Cliente paciente crónico: Cliente que usa la aplicación con el sistema de alertas para enfermedades crónicas.
+- **Cliente paciente normal**: Cliente que usa la aplicación para el uso normal de consultas con su médico.
+- **Cliente médico**: Médicos o especialistas sanitarios que usan el sistema para pasar consultas, ver estadísticas...
+- **Cliente ambulancia IOT**: Especialistas sanitarios en el área de ambulancias y alertas, para atender una alerta creado por el sistema para un paciente crónico.
+- **CEP**: Este servidor es el encargado de atender los eventos para los pacientes críticos.
+- **Brokers**: Encargado de comunicar las diferentes partes del sistema entre sí.- **Servidor Madrid - Datos ambientales**: Servidor externo a nuestro sistema pero con el que nos comunicamos para obtener datos (temperatura, humedad, niveles de polución, niveles de alergenos…) que usamos en nuestro sistema.
+- **Big Data server**: base de datos global que almacena la información de toda la aplicación.
+- **Open data service**: servidor encargado de la analitica de los datos y estadisticas referente a la aplicación.
+
 #### 4.4.5 Rationale
+
+Los distintos tipos de clientes se conectan al sistema usando distintos dispositivos (móvil, tablet, pc…) mediante internet al servidor de aplicaciones, este a su vez se conecta al servidor de brokers que se comunicara con el resto de componentes del sistema.
+  
+El CEP es un servidor que gestiona los eventos de los pacientes críticos para los avisos de las ambulancias en casos de emergencia.
+  
+El servidor de datos ambientales de la comunidad de madrid, nos da la información de las variables ambientales que usaremos en la aplicación como (temperatura, humedad, niveles de polución, niveles de alérgenos…)
+  
+Todo el sistema está conectado con el big data server, que gestiona la información que se guarda en la aplicación, menos los datos ambientales que están guardados en el servidor externo de la comunidad de madrid.
+  
+En el servidor Open data Service se gestiona al analitica de datos y estadísticas referentes a la aplicación que se publican en internet.
+  
 
 ### 4.5 Escenarios
 
 #### 4.5.1 Descripción
 
+Esta vista pretende describir las actividades o funcionalidades del sistema. Se utiliza para identificar y validar el diseño de la arquitectura y está formada por los Casos de Uso que describen el comportamiento del sistema como lo verían los usuarios finales, los analistas
+
 #### 4.5.2 Notación
+Para realizar esta vista hemos utilizado los siguientes elementos de la notación UML:
+
+![Actor](act.png){height=7%}
+
+![Caso de uso](cu.png){height=7%}    
+
+![Asociación de comunicación](ascom.png){height=7%}    
+
+![Extensión](ext.png){height=7%}    
+
+![Límite del sistema](lim.png){height=7%}    
 
 #### 4.5.3 Vista
+
+![Vista de escenarios](escenarios.png)
 
 #### 4.5.4 Catálogo
 
@@ -272,13 +349,13 @@ Un diagrama de implementación en Unified Modeling Language modela la implementa
 
 ### 5.1 Entrevistas
 
-#### 5.1.1
+#### 5.1.1 Lógica / Desarrollo
 
-#### 5.1.2
+#### 5.1.2 Lógica / Despliegue
 
-#### 5.1.3
+#### 5.1.3 Desarrollo / Despliegue
 
-#### 5.1.4
+#### 5.1.4 
 
 #### 5.1.5
 
