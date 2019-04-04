@@ -195,13 +195,13 @@ Puede ser descrita como un conjunto de redes lógicas de procesos que son ejecut
 
 Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los siguiente elementos
 
-![Nodo inicial](01.png)
+![Nodo inicial](Captura13.PNG){height=7%}
 
-![Acción](01.png)
+![Acción](Captura14.PNG){height=7%} 
 
-![Fujo o transición](01.png)
+![Fujo o transición](Captura15.PNG){height=5%} 
 
-![Nodo final](01.png)
+![Nodo final](Captura16.PNG){height=7%} 
 
 #### 4.2.3 Vista
 
@@ -398,6 +398,8 @@ Para cada par de vistas, se detalla en una tabla la correspondencia entre elemen
 #### 5.1.1 Lógica / Procesos
 
 #### 5.1.2 Lógica / Desarrollo
+
+![Logica / Desarrollo](logica_desarrollo_view.PNG)
 
 #### 5.1.3 Lógica / Despliegue
 ![Lógica / Despliegue](LOGICA-DESPLIEGUE.PNG){height=60%}
