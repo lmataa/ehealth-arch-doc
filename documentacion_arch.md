@@ -225,11 +225,11 @@ El software está empaquetado en trozos pequeños (bibliotecas de programas o su
 
 #### 4.3.2 Notación
 
-![Componente](01.png)
+![Componente](Captura10.png){height=10%}
   
-![Nodo físico](01.png)
+![Nodo físico](Captura11.png){height=10%}
   
-![Comunicación entre nodos](01.png)
+![Comunicación entre nodos](Captura12.png){height=10%}
 
 #### 4.3.3 Vista
 
@@ -333,7 +333,7 @@ Para realizar esta vista hemos utilizado los siguientes elementos de la notació
 
 ![Asociación de comunicación](ascom.png){height=7%}    
 
-![Extensión](ext.png){height=7%}    
+![Extensión](ext.png){height=5%}    
 
 ![Límite del sistema](lim.png){height=7%}    
 
@@ -368,13 +368,16 @@ Para realizar esta vista hemos utilizado los siguientes elementos de la notació
 
  Business goal | Vista lógica | Vista de procesos | Vista de desarrollo | Vista de despliegue | Vista de escenarios
 --- | --- | --- | --- | --- | ---
- BG1 |   |   |   |   |   
- BG2 |
- BG3 | 
- BG4 |
- BG5 |
- BG6 |
- BG7 |
+ BG1   | x | x |   |   | x 
+ BG1.1 | x | x |   |   | x 
+ BG1.2 | x | x |   |   | x 
+ BG2   | x | x | x |   | x 
+ BG2.1 | x | x | x |   |
+ BG2.2 | x | x | x |   |
+ BG3   | x | x |   |   | x
+ BG4   |   | x | x | x |
+ BG5   |   | x | x | x | x
+ BG6   |   | x | x | x | 
 
 ### 5.3 Entre atributos de calidad y vistas
 
