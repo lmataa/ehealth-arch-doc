@@ -205,7 +205,9 @@ Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los s
 
 #### 4.2.3 Vista
 
-![Vista de procesos](01.png)
+![Vista de procesos 1](process_view.png)
+
+![Vista de procesos 2](process_view2.png)
 
 #### 4.2.4 Catálogo
 
@@ -343,25 +345,80 @@ Para realizar esta vista hemos utilizado los siguientes elementos de la notació
 
 #### 4.5.4 Catálogo
 
+En la vista aparecen 6 actores:
+
+- **Ambulancia**
+    
+    - **Atender alertas**: cuando se produce una alerta de un paciente, las ambulancias recibirán una notificación procedente del CEP para acudir a la ayuda lo más rápido posible.
+
+- **Médico especialista**
+    
+    - **Diagnosticar**: los médicos se encargan de entre otras cosas de realizar un diagnóstico a pacientes ya sea vía telemática o presencial.
+Ver historial paciente: los médicos podrán consultar el historial de cualquier paciente en cualquier momento.
+    - **Atender consultas**: los médicos atienden consultas, tanto personales como no personales, solicitadas por los pacientes.
+Dar de alta paciente: los médicos se encargan de dar de alta a nuevos pacientes de los que no se tiene registrado ningún dato.
+    - **Modificar paciente**: los médicos pueden modificar los datos de un determinado paciente.
+    - **Autenticarse**: para acceder al sistema y a toda la información relacionada a sus pacientes, los médicos necesitan introducir un usuario y una contraseña asociados a su cuenta.
+
+- **Paciente**
+
+    En este actor se engloban tanto los pacientes crónicos como los que no lo son.
+
+    - **Realizar consulta**: los pacientes podrán realizar consultas para resolver cualquier duda relativa a síntomas,enfermedad...
+
+    - **Personalizar aplicación**: cada paciente podrá elegir la información relativa a las condiciones medioambientales que quiera visualizar en su aplicación.
+Autenticarse: para acceder al sistema y poder realizar cualquier tipo de operación, los pacientes necesitan introducir un usuario y una contraseña asociados a su cuenta .
+
+- **Dispositivo IoT pacientes**
+
+    - **Recoger información**: los sensores se ocupan de recoger información relativa a la salud de los pacientes en tiempo real.
+    
+    - **Alertar**: en caso de que los datos recogidos por los dispositivos estén fuera de un rango preestablecido, mandará una alerta que puede ser urgente o no en función de la anomalía de los valores de los datos.
+    
+    - **Actualizar historial monitorización**: una vez recogida la información de los pacientes, los dispositivos actualizarán el historial de monitorización enviando los datos a la base de datos que se utiliza para ello.
+
+- **Desarrollador**
+    
+    - **Gestionar sistema**: los desarrolladores se encargan de  realizar todas las gestiones pertinentes del sistema, incluyendo entre ellas operaciones de mantenibilidad,escalabilidad del sistema...
+
+- **Investigador**
+    
+    - **Acceder al portal de datos médicos**: los investigadores accederán al servidor open data dónde se encontrarán los datos de los pacientes tratados para su estudio.
+
 #### 4.5.5 Rationale
+
+- **Usabilidad**: en esta vista reflejamos cada una de las acciones que pueden realizar los actores en el sistema, de forma que se puede apreciar claramente el impacto de este QA en la vista.
+- **Seguridad**: este QA impacta de una forma muy importante en la vista. En primer lugar, reflejamos que los médicos son los únicos que pueden realizar el alta y modificación de nuevos pacientes o pacientes ya existentes. En segundo lugar se ve reflejado que para que los médicos puedan acceder a datos de pacientes,realizar consultas…, los médicos necesitan aportar las credenciales oportunas. En tercer y último lugar, reflejamos que para que los pacientes puedan realizar las gestiones oportunas, es necesario su autenticación.
 
 ## 5. Trazabilidad
 
 ### 5.1 Entrevistas
+Para cada par de vistas, se detalla en una tabla la correspondencia entre elementos en las vistas.
 
-#### 5.1.1 Lógica / Desarrollo
+#### 5.1.1 Lógica / Procesos
 
-#### 5.1.2 Lógica / Despliegue
+#### 5.1.2 Lógica / Desarrollo
 
-#### 5.1.3 Desarrollo / Despliegue
+#### 5.1.3 Lógica / Despliegue
+![Lógica / Despliegue](LOGICA-DESPLIEGUE.PNG){height=50%}
 
-#### 5.1.4 
+#### 5.1.4 Lógica / Escenarios
+![Lógica / Escenarios](LOGICA-ESCENARIOS){height=50%}
 
-#### 5.1.5
+#### 5.1.5 Desarrollo / Procesos
 
-#### 5.1.6
 
-#### 5.1.7
+#### 5.1.6 Desarrollo / Despliegue
+![Desarrollo / Despligue](DESARROLLO-DESPLIEGUE.PNG){height=50%}
+
+#### 5.1.7 Desarrollo / Escenarios
+![Desarrollo / Escenarios](DESARROLLO-ESCENARIOS.PNG){height=50%}
+
+#### 5.1.8 Procesos / Despliegue
+
+#### 5.1.9 Procesos / Escenarios
+
+#### 5.1.10 Despliegue / Escenarios
 
 ### 5.2 Entre Business Goals y vistas
 
@@ -382,16 +439,16 @@ Para realizar esta vista hemos utilizado los siguientes elementos de la notació
 ### 5.3 Entre atributos de calidad y vistas
 
 Atributos de calidad | Vista lógica | Vista de procesos | Vista de desarrollo | Vista de despliegue | Vista de escenarios
---- | --- | --- | --- | --- | ---
-Disponibilidad |   |   |   |   |   
-Usabilidad |
-Seguridad |
-Interoperabilidad |
-Rendimiento |
-Escalabilidad |
-Portabilidad |
-Mantenibilidad |
-Modificabilidad |
+---               | --- | --- | --- | --- | ---
+Disponibilidad    | x |   | x | x | 
+Usabilidad        | x |   |   |   | x
+Seguridad         |   |   | x | x | x
+Interoperabilidad |   |   |   | x |
+Rendimiento       | x |   | x | x |
+Escalabilidad     |   |   | x |   |
+Portabilidad      |   |   |   | x |
+Mantenibilidad    |   |   |   | x |
+Modificabilidad   |   |   |   |   |
 
 
 ## 6. Conclusiones
