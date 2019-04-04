@@ -157,7 +157,7 @@ Hemos representado la vista lógica mediante un diagrama de clases (especificand
 
 
 #### 4.1.3 Vista
-![Vista lógica](vista_logica.png)
+![Vista lógica](logic_view.png)
 
 #### 4.1.4 Catálogo
 
@@ -211,7 +211,25 @@ Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los s
 
 #### 4.2.4 Catálogo
 
+- **Cliente - Ambulancia IoT**:
 
+- **Cliente - Paciente crónico**:
+
+- **Cliente - Paciente general**:
+
+- **Cliente - Médico especialista**:
+
+- **Servidor Apps**:
+
+- **Procesos Broker**:
+
+- **Procesos CEP**:
+
+- **Procesos Big Data**:
+
+- **Procesos Open Data**:
+
+- **Procesos Sensores Madrid**:
 
 #### 4.2.5 Rationale
 
