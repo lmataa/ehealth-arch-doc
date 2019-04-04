@@ -414,6 +414,7 @@ Autenticarse: para acceder al sistema y poder realizar cualquier tipo de operaci
 Para cada par de vistas, se detalla en una tabla la correspondencia entre elementos en las vistas.
 
 #### 5.1.1 Lógica / Procesos
+![Lógica / Procesos](LOGICA-PROCESOS.PNG)
 
 #### 5.1.2 Lógica / Desarrollo
 
@@ -426,7 +427,7 @@ Para cada par de vistas, se detalla en una tabla la correspondencia entre elemen
 ![Lógica / Escenarios](LOGICA-ESCENARIOS.PNG){height=60%}
 
 #### 5.1.5 Desarrollo / Procesos
-
+![Desarrollo / Procesos](Tabla Desarrollo_Procesos.png)
 
 #### 5.1.6 Desarrollo / Despliegue
 ![Desarrollo / Despligue](DESARROLLO-DESPLIEGUE.PNG){height=60%}
