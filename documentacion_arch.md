@@ -18,7 +18,7 @@ Se propone la construcción de un sistema eHealth en el contexto de Madrid enten
 
 Para conciliar las ideas propuestas en dicho plan, el sistema pretende facilitar el trato con pacientes permitiendo consultas mediante vía telemática; diagnóstico remoto de enfermedades con perfil establecido; tratamiento de enfermedades terminales o crónicas así como monitoreo de las mismas mediante el uso de tecnologías IoT; avisos de rigesgos de salud pública con un sistema de alertas personalizables (alérgenos, nivel de contaminación); categorización y estudio de enfermedades a nivel de población, de forma que la investigación se vea explícitamente favorecida.
 
-En cuanto a las comunicaciones telemáticas, el sistema contará con aplicaciones cliente a las que los ciudadanos podrán conectarse y ligar a su centro médico o seguro sanitario. En caso de tratarse de un paciente que requiera de un seguimiento personalizado, obtendrá una extensión del cliente, que le permitirá, junto con un pequeño equipo de sensores IoT, ser susceptible de monitoreo y seguimiento por los especialistas médicos que le estén tratando. Mejorando de esta forma la calidad de vida tanto del paciente terminal o crónico como la del doctor especialista, elevando la sostenibilidad de recursos públicos de Madrid en sanidad, así como de recursos humanos en centros médicos y hospitales.
+En cuanto a las comunicaciones telemáticas, el sistema contará con aplicaciones cliente a las que los ciudadanos podrán conectarse y ligar a su centro médico. En caso de tratarse de un paciente que requiera de un seguimiento personalizado, obtendrá una extensión del cliente, que le permitirá, junto con un pequeño equipo de sensores IoT, ser susceptible de monitoreo y seguimiento por los especialistas médicos que le estén tratando. Mejorando de esta forma la calidad de vida tanto del paciente terminal o crónico como la del doctor especialista, elevando la sostenibilidad de recursos públicos de Madrid en sanidad, así como de recursos humanos en centros médicos y hospitales.
 
 En caso de haber parámetros en el seguimiento de estos pacientes fuera del rango esperado, se categoriza la urgencia de la anomalía y en caso de ser urgente, una ambulancia (ahora equipada con dispositivos IoT que las conecten al sistema) se dirigirá a la ubicación del sensor. Los datos, anomalías e incidencias serán comprobados a varios niveles de redundancia para resolver cualquier tipo de inconsistencia.
 
@@ -116,7 +116,7 @@ Para el orden de prioridad se ha usado la técnica de **dote-voting**.
 **Usabilidad** | Facilidad de uso | Necesidad de que la aplicación sea fácilmente entendible e intuitiva para todo tipo de usuarios. (H,M)
 **Seguridad** |   Integridad de los datos   |   Como cliente necesito que la seguridad de los datos (tanto de los pacientes como de los especialistas) sea íntegra para evitar problemas con los usuarios. (H,H)
  \- | Restricción al acceso de los datos | Como cliente necesito que exista una restricción al acceso de los datos para aumentar la seguridad de la aplicación y de los usuarios. (H,M)
- **Interoperabilidad** | comunicacion e integracion de las partes del sistema | las diferentes partes del sistema deben comunicarse entre sí para funcionar correctamente y compartir datos (H,M)
+ **Interoperabilidad** | Comunicacion e integracion de las partes del sistema | las diferentes partes del sistema deben comunicarse entre sí para funcionar correctamente y compartir datos (H,M)
  **Portabilidad** | Disponibilidad en distintos sistemas operativos y dispositivos |  Como cliente necesito que la aplicación sea usable en cualquier dispositivo independientemente del sistema operativo utilizado.   (M,M)
  **Mantenibilidad** | Cambios en el sistema | Como cliente necesito que se puedan realizar cambios para poder mejorar la aplicación. (M,M)
  **Rendimiento** | Funcionalidad correcta en tiempos de respuesta y de ejecución cortos | La aplicación deberá funcionar con una respuesta rápida entre sus módulos. (H,M)
@@ -143,11 +143,11 @@ La vista lógica proporciona la base para comprender la estructura y la organiza
 Hemos representado la vista lógica mediante un diagrama de clases (especificando solo los nombres de las clases y las interacciones entre sí), en la que los símbolos representan:
 
     
- ![Clase: Representa las distintas clases del sistema.](01.png)
+ ![Clase: Representa las distintas clases del sistema.](01.png){height=9%}
      
- ![Asociación: Representa acciones entre clases.](02.png)
+ ![Asociación: Representa acciones entre clases.](02.png){height=5%}
      
- ![Herencia: Esta relación entre clases indica que las clases hijas heredan los mismos atributos y procedimientos que tiene la clase padre a la que señalan.](03.png)
+ ![Herencia: Esta relación entre clases indica que las clases hijas heredan los mismos atributos y procedimientos que tiene la clase padre a la que señalan.](03.png){height=10%}
     
 - Multiplicidad entre clases:
     - 1,1 : Uno y solo uno
@@ -208,15 +208,15 @@ El software está empaquetado en trozos pequeños (bibliotecas de programas o su
 
 #### 4.3.3 Vista
 
-![Vista implementación](vista_deploy.png)
+![Vista implementación](dev_view.png)
 
 #### 4.3.4 Catálogo
 
 En dicha vista reflejamos los nodos de Servidor BIG DATA, CEP, Servidor aplicación, Sensores, Broker, Médicos, Servidor open data y Pacientes. 
 
-- Nodo Servidor BIG DATA: 
+- Nodo Servidor BIG DATA: Se guardan los diferentes datos y bases de datos con tecnología clustering y data warehouse. Se pretende que el mainfraime sea capaz de procesar los datos sin necesidad de migrarlos a otros nodos de forma que otros servicios puedan acceder con menor carga de procesamiento a datos más específicos y no personales, como es el caso de la plataforma open-data.
 
-- Nodo CEP:
+- Nodo CEP: Los dispositivos IoT envían eventos al context Brooker, el cual 
 
 - Nodo Servidor aplicación:
 
