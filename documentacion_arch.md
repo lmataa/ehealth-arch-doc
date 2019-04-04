@@ -400,25 +400,26 @@ Para cada par de vistas, se detalla en una tabla la correspondencia entre elemen
 #### 5.1.2 Lógica / Desarrollo
 
 #### 5.1.3 Lógica / Despliegue
-![Lógica / Despliegue](LOGICA-DESPLIEGUE.PNG){height=50%}
+![Lógica / Despliegue](LOGICA-DESPLIEGUE.PNG){height=60%}
 
 #### 5.1.4 Lógica / Escenarios
-![Lógica / Escenarios](LOGICA-ESCENARIOS){height=50%}
+![Lógica / Escenarios](LOGICA-ESCENARIOS.PNG){height=60%}
 
 #### 5.1.5 Desarrollo / Procesos
 
 
 #### 5.1.6 Desarrollo / Despliegue
-![Desarrollo / Despligue](DESARROLLO-DESPLIEGUE.PNG){height=50%}
+![Desarrollo / Despligue](DESARROLLO-DESPLIEGUE.PNG){height=60%}
 
 #### 5.1.7 Desarrollo / Escenarios
-![Desarrollo / Escenarios](DESARROLLO-ESCENARIOS.PNG){height=50%}
+![Desarrollo / Escenarios](DESARROLLO-ESCENARIOS.PNG){height=60%}
 
 #### 5.1.8 Procesos / Despliegue
 
 #### 5.1.9 Procesos / Escenarios
 
 #### 5.1.10 Despliegue / Escenarios
+![Despliegue / Escenario](DESPLIEGUE-ESCENARIOS.PNG){height=60%}
 
 ### 5.2 Entre Business Goals y vistas
 
