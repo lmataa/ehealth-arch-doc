@@ -293,6 +293,7 @@ En la vista de procesos que hemos realizado, se ven reflejados casi todos los at
 
 4. La escalabilidad queda reflejada también porque el desarrollo del sistema es modular y cada máquina contempla diferentes módulos que pueden crecer. Además en caso de ser el broker cuello de botella, siempre se podrán dedicar más recursos a esta parte y ganar en rendimiento.
 
+Como comentario en esta vista, no aparecen explicados todos los procesos a bajo nivel porque queda fuera del alcance de este documento. En su lugar se muestran paquetes de procesos y sobre todo los procesos relativos a las comunicaicones de las máquinas.
 
 ### 4.3 Vista de desarrollo 
 
@@ -539,5 +540,29 @@ Modificabilidad   |   | x | x |   |
 
 ### 6.1 Relativas a la arquitectura
 
+La realización de esta práctica ha supuesto un reto académico para todos los integrantes, bien por faltade experiencia trabajando en arquitecturas así como una falta de madurez como equipo del grupo de trabajo. 
+
+Hemos tenido que reducir el alcance varias veces conforme avanzábamos en la documentación de la arquitectura por cómo afecta un pequeño business goal a todo el esistema. Nos queda claro la relación de un business goal con su proyección en la documentación.
+
+Para aclarar todo el flujo de trabajo, hemos diseñado un diagrama de alto nivel en función de las información recavada sobre arquitecturas Big Data y de Smart Cities. Las fuentes de este proceso han sido páginas oficiales de despliegue y diseño arquitectónico de Microsoft o IBM por citar algunas.
+
+Ha sido en base al diagrama anterior que hemos podido definir mejor cada vista específica y una vez reunidas las 4 del modelo, realizar la vista de casos de uso cierra el proceso de "bombeo de abstracción" del diseño. Por lo tanto se ha seguido una táctica Top-Down (diagrama alto nivel -> vistas) y luego Bottom-Up (vistas realizadas y cruces entre ellas).
+
+Además se ha tratado de incorporar horizontalmente (entre todas las vistas) los patrones de diseño arquitectónicos que hemos visto en la asignatura. En este caso comentamos de nuevo que se han usado un Broker de contexto que enlaza comunicaciones y sirve de intermediario entre los subsistemas y que gracias a él el sistema se hace escalable así como sirve de filtro para las emergencias (a las que asigna prioridad). Otro patrón usado es el de eventos ya que el sistema entero, al tratar dispositivos IoT genera eventos de actualización constantemente, así como eventos de trato especial que serían los de emergencia. Para las peticiones de bases de datos simples, sin necesidad de rendimiento, se ha usado un cliente servidor, donde intervienen los distintos clientes y el servidor de aplicaciones principal.
+
+Para el futuro de internet y la integración en una Smart City se ha considerado incluir en el sistema, en vez de una base de datos simple, una con tecnologís Big Data que hagan análisis y preproceso de los datos allí almacenados. Éstos, al ser procesados y analizados con técnicas de ML que estraen características, se pueden cruzar con los datos recibidos de los sensores de la Comunidad de Madrid. El paquete de datos resultantes, en función de ciertos intereses es publicado en un servidor dedicado de Open - Data para lo que se ha considerado CKAN como plataforma. La idea es que investigadores de distintos campos, puedan ver la ciudad como un ente y relacionar las consultas de pacientes con datos impersonales así como las enfermedades más comunes y su relación directa con los índices de contaminación, además de otras aplicaciones biomedicas. Lo cual permitiría a nivel de ciudad, tomar decisiones inteligentes sobre la salud de sus ciudadanos.
+
+Quedan fuera de muchas tablas de trazabilidad desarrollo e investigación, pero hemos consdierado que tanto el portal de Open-Data como el flujo de desarrollo, fuera del alcance del sistema principal, permitiendo conexiones para el mantenimiento desde el servidor Big - Data, donde exisitirán los diferentes repositorios y acceso a la salud del sistema así como su monitorización. Los investigadores serán entidades manejadas localmente en el servidor de CKAN.
+
+Por último en cuanto a la arquitectura se refiere, hemos considerado numerosas alternativas de diseño. Por mencionar algunos: 
+
+El servicio de CEP podría estar conectado directamente al servidor de aplicaciones pero perderíamos modularidad en servicios y ganaríamos en eficiencia de procesos. Las peticiones multimedia podrían usar un servicio de terceros pero perderíamos en integridad y trazabilidad de datos. Podríamos haber incluido otro broker para los dispositivo IoT de la Comunidad de Madrid, pero hemos decidido descargar los datos del servidor oficial. En este último caso, de haber considerado un broker para el IoT de Madrid (la parte de contaminación del sistema), éste habría sido aún más escalable e integrable verticalmente con la Smart City.
+
+
 ### 6.2 Personales
 
+Como hemos comentado anteriormente, el trabajo como equipo también ha supuesto un reto personal. Hemos trabajado con GitHub para coordinar las versiones del documento así como con Google Drive como portapapeles (algunos miembros del equipo han tenido que aprender git y por ello se ha facilitado ambos, pero para la versión final siempre se ha utiliado Github). En el repositorio final tenemos todos los archivos que se han generado para la realización de la documentación.
+
+Hemos tenido que reunirnos para determinar el alcance del proyecto varias veces y no han faltado respuestas emocionales debido a distintos enfoques que se pensaba dar al sistema. Sin embargo una vez obtenido el resultado final y junto con la motivación del equipo, se ha conseguido por un lado experiencia como **equipo** y lo que en nuestra opinión es una buen diseño arquitectónico para integrar en una Smart City.
+
+Debido a la vida personal de cada miembro y las exigencias de otras asignaturas, al principio del ciclo de vida de la práctica han habido holguras que se han pretendido salvaguardar trabajando en las fases finales. Recomendamos siempre no hacer esto ya que la carga de trabajo final es muy grande, queda como lección aprendida para el equipo en otras ocasiones.
