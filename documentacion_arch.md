@@ -323,15 +323,15 @@ En dicha vista reflejamos los nodos de Servidor BIG DATA, CEP, Servidor aplicaci
 
 - **Nodo CEP**: Los dispositivos IoT envían eventos al context Brooker, el cual procesa las comunicaciones del sistema. Allí los eventos catalogados como de emergencia se encauzarán con prioridad al nodo CEP. Éste procesará las diferencias y tratará las direcciónes para las comunicaicones con las ambulancias. Se mantendrá operativo 24h al tratarse de un servicio de emergencia, por que se trata de procesamiento crítico basado en eventos. Supone una carga de peso menos para el brooker y permite que el sistema sea más seguro, íntegro, desacoplado y eficiente con las peticiones de datos.
 
-- **Nodo Servidor aplicación**: Se encarga de mostrar el servicio oportuno para cada tipo de cliente. En primer lugar encauza las comunicaicones urgentes de ambulancia, muestra las vistas de médico especialista para el seguimiento de datos, y las de pacientes de cada tipo de forma que puedan recibir notificaciones y hacer peticiones a la base de datos principal.
+- **Nodo Servidor aplicación**: Se encarga de mostrar el servicio oportuno para cada tipo de cliente. En primer lugar encauza las comunicaicones urgentes de ambulancia, muestra las vistas de médico especialista para el seguimiento de datos, y las de pacientes de cada tipo de forma que puedan recibir notificaciones y hacer peticiones a la base de datos principal. Ademas encauza las comunicaciones de multimedia entre paciente y médico.
 
 - **Nodo Sensores**: El nodos sensores corresponde con los servidores medioambientales de Madrid donde accedemos para descargarnos los indicadores de contaminación. Corresponde con el grupo de prioridad 5.
 
-- **Nodo Broker**: Posee la orquestación de las peticiones de datos al servidor de Big Data, gestiona la actualización de datos de las aplicaciones cliente, encamina las comunicaciones de emergencia al CEP. Orquesta datos IoT de los servidores de Madrid.
+- **Nodo Broker**: Posee la orquestación de las peticiones de datos al servidor de Big Data, gestiona la actualización de datos de las aplicaciones cliente, encamina las comunicaciones de emergencia al CEP. Orquesta datos IoT de los servidores de Madrid en dirección a la base de datos Big Data principal.
 
 - **Nodo Médicos**: Nodo final del sistema donde se conectan los médicos. Corresponde con el grupo de prioridad 3.
 
-- **Nodo Servidor Open Data**: Nodo final del sistema que corresponde a un servicio web Open Data basad en CKAN.
+- **Nodo Servidor Open Data**: Nodo final del sistema que corresponde a un servicio web Open Data basado en CKAN.
 
 - **Nodo Pacientes**: Nodo final del sistema donde se conectan los pacientes, tanto los correspondientes al grupo de prioridad 1 como el grupo de prioridad 2.
 
@@ -354,7 +354,7 @@ Esta vista se ve afectada por diferentes atributos de calidad que hemos definido
 ### 4.4 Vista de despliegue 
 
 #### 4.4.1 Descripción
-Un diagrama de implementación en Unified Modeling Language modela la implementación física de artefactos en nodos.
+Un diagrama de implementación en Unified Modeling Language modela la implementación física de artefactos en nodos. En esta vista vemos dónde se despliega físicamente en sistema, en qué máquinas, con qué conexiones, y qué nombres reciben éstas.
 
 #### 4.4.2 Notación
 
@@ -380,23 +380,24 @@ Cliente paciente crónico: Cliente que usa la aplicación con el sistema de aler
 - **Cliente paciente normal**: Cliente que usa la aplicación para el uso normal de consultas con su médico.
 - **Cliente médico**: Médicos o especialistas sanitarios que usan el sistema para pasar consultas, ver estadísticas...
 - **Cliente ambulancia IOT**: Especialistas sanitarios en el área de ambulancias y alertas, para atender una alerta creado por el sistema para un paciente crónico.
-- **CEP**: Este servidor es el encargado de atender los eventos para los pacientes críticos.
-- **Brokers**: Encargado de comunicar las diferentes partes del sistema entre sí.- **Servidor Madrid - Datos ambientales**: Servidor externo a nuestro sistema pero con el que nos comunicamos para obtener datos (temperatura, humedad, niveles de polución, niveles de alergenos…) que usamos en nuestro sistema.
+- **CEP**: Este servidor es el encargado de atender los eventos de emergencia para los pacientes críticos.
+- **Brokers**: Encargado de comunicar las diferentes partes del sistema entre sí.  
+- **Servidor Madrid - Datos ambientales**: Servidor externo a nuestro sistema pero con el que nos comunicamos para obtener datos (temperatura, humedad, niveles de polución, niveles de alergenos…) que usamos en nuestro sistema.
 - **Big Data server**: base de datos global que almacena la información de toda la aplicación.
 - **Open data service**: servidor encargado de la analitica de los datos y estadisticas referente a la aplicación.
 - **Servidor Aplicaciones**: Servidor encargado de otorgar servicio a los clientes así como de comunicar con el Broker las peticiones de todos los servicios a las bases de datos y las emergencias.
 
 #### 4.4.5 Rationale
 
-Los distintos tipos de clientes se conectan al sistema usando distintos dispositivos (móvil, tablet, pc…) mediante internet al servidor de aplicaciones, este a su vez se conecta al servidor de brokers que se comunicara con el resto de componentes del sistema.
+Los distintos tipos de clientes se conectan al sistema usando distintos dispositivos (móvil, tablet, pc…) mediante internet al servidor de aplicaciones, este a su vez se conecta al servidor de brokers que se comunica con el resto de componentes del sistema.
   
 El CEP es un servidor que gestiona los eventos de los pacientes críticos para los avisos de las ambulancias en casos de emergencia.
   
-El servidor de datos ambientales de la comunidad de madrid, nos da la información de las variables ambientales que usaremos en la aplicación como (temperatura, humedad, niveles de polución, niveles de alérgenos…)
+El servidor de datos ambientales de la Comunidad de Madrid, nos da la información de las variables ambientales que usaremos en la aplicación como (temperatura, humedad, niveles de polución, niveles de alérgenos…).
   
-Todo el sistema está conectado con el big data server, que gestiona la información que se guarda en la aplicación, menos los datos ambientales que están guardados en el servidor externo de la comunidad de madrid.
+Todo el sistema está conectado con el Big Data server, que gestiona la información que utiliza en todo el sistema, incluidos los datos ambientales que se usan para procesos de análisis.
   
-En el servidor Open data Service se gestiona al analitica de datos y estadísticas referentes a la aplicación que se publican en internet.
+En el servidor Open data Service se gestiona al analítica de datos y estadísticas referentes a la salud pública de la Comunidad de Madrid que se publican en un portal CKAN.
   
 
 ### 4.5 Escenarios
@@ -542,9 +543,9 @@ Modificabilidad   |   | x | x |   |
 
 La realización de esta práctica ha supuesto un reto académico para todos los integrantes, bien por faltade experiencia trabajando en arquitecturas así como una falta de madurez como equipo del grupo de trabajo. 
 
-Hemos tenido que reducir el alcance varias veces conforme avanzábamos en la documentación de la arquitectura por cómo afecta un pequeño business goal a todo el esistema. Nos queda claro la relación de un business goal con su proyección en la documentación.
+Hemos tenido que reducir el alcance varias veces conforme avanzábamos en la documentación de la arquitectura por cómo afecta un pequeño business goal a todo el sistema. Nos queda claro la relación de un business goal con su proyección en la documentación.
 
-Para aclarar todo el flujo de trabajo, hemos diseñado un diagrama de alto nivel en función de las información recavada sobre arquitecturas Big Data y de Smart Cities. Las fuentes de este proceso han sido páginas oficiales de despliegue y diseño arquitectónico de Microsoft o IBM por citar algunas. Además hemos revisado los documentos adjuntos adicionales a la práctica relativos a las normativas y planes Europeos en temas de salud pública, de donde hemos sacado la mayoría de ideas reflejadas en los casos de uso.
+Para aclarar todo el flujo de trabajo, hemos diseñado un diagrama de alto nivel en función de la información recavada sobre arquitecturas Big Data y de Smart Cities. Las fuentes de este proceso han sido páginas oficiales de despliegue y diseño arquitectónico de Microsoft o IBM por citar algunas. Además hemos revisado los documentos adjuntos adicionales a la práctica relativos a las normativas y planes Europeos en temas de salud pública, de donde hemos sacado la mayoría de ideas reflejadas en los casos de uso.
 
 Ha sido en base al diagrama anterior que hemos podido definir mejor cada vista específica y una vez reunidas las 4 del modelo, realizar la vista de casos de uso cierra el proceso de "bombeo de abstracción" del diseño. Por lo tanto se ha seguido una táctica Top-Down (diagrama alto nivel -> vistas) y luego Bottom-Up (vistas realizadas y cruces entre ellas).
 
