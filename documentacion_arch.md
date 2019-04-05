@@ -544,7 +544,7 @@ La realización de esta práctica ha supuesto un reto académico para todos los 
 
 Hemos tenido que reducir el alcance varias veces conforme avanzábamos en la documentación de la arquitectura por cómo afecta un pequeño business goal a todo el esistema. Nos queda claro la relación de un business goal con su proyección en la documentación.
 
-Para aclarar todo el flujo de trabajo, hemos diseñado un diagrama de alto nivel en función de las información recavada sobre arquitecturas Big Data y de Smart Cities. Las fuentes de este proceso han sido páginas oficiales de despliegue y diseño arquitectónico de Microsoft o IBM por citar algunas.
+Para aclarar todo el flujo de trabajo, hemos diseñado un diagrama de alto nivel en función de las información recavada sobre arquitecturas Big Data y de Smart Cities. Las fuentes de este proceso han sido páginas oficiales de despliegue y diseño arquitectónico de Microsoft o IBM por citar algunas. Además hemos revisado los documentos adjuntos adicionales a la práctica relativos a las normativas y planes Europeos en temas de salud pública, de donde hemos sacado la mayoría de ideas reflejadas en los casos de uso.
 
 Ha sido en base al diagrama anterior que hemos podido definir mejor cada vista específica y una vez reunidas las 4 del modelo, realizar la vista de casos de uso cierra el proceso de "bombeo de abstracción" del diseño. Por lo tanto se ha seguido una táctica Top-Down (diagrama alto nivel -> vistas) y luego Bottom-Up (vistas realizadas y cruces entre ellas).
 
