@@ -195,13 +195,13 @@ Puede ser descrita como un conjunto de redes lógicas de procesos que son ejecut
 
 Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los siguiente elementos
 
-![Nodo inicial](Captura13.PNG){height=7%}
+![Nodo inicial: Muestra el punto de partida del fujo de acciones](Captura13.PNG){height=7%}
 
-![Acción](Captura14.PNG){height=7%} 
+![Acción: Representa una actividad o acción.](Captura14.PNG){height=7%} 
 
-![Fujo o transición](Captura15.PNG){height=5%} 
+![Fujo o transición: Indica el orden de ejecución](Captura15.PNG){height=5%} 
 
-![Nodo final](Captura16.PNG){height=7%} 
+![Nodo final: Final de todos los flujos de acciones en el diagrama](Captura16.PNG){height=7%} 
 
 #### 4.2.3 Vista
 
@@ -211,28 +211,87 @@ Seguimos la notación UML, para hacer este tipo de diagrama son necesarios los s
 
 #### 4.2.4 Catálogo
 
-- **Cliente - Ambulancia IoT**:
+En el primer diagrama se pueden observar cinco columnas, las primeras cuatro se corresponden con los procesos de los clientes al servidor de aplicaicones. En el segundo diagrama se muestran los procesos del servidor de aplicaciones al resto del sistema, ya que este hace las veces de input de datos para la sincronización global con la base de datos Big Data.
+
+A continuación se va a describir del desarrollo de los procesos de cada columna.
+
+- **Cliente - Ambulancia IoT**: 
+    - Esperar conexión: El cliente esperará la conexión al servidor para empezar a recibir mensajes.
+    
+    - Recibir emergencia: El dispositivo IoT de la ambulancia dispone de un demonio activo de escucha de eventos de emergencia que vengan del servidor de applicaciones.
+    
+    - Generar actualización de ubicación: La ambulancia realiza peticiones de actualización en otro proceso para que se lleve la cuenta de su ubicación. Se usan eventos.
 
 - **Cliente - Paciente crónico**:
 
+    - Genera actualización: Envía al servidor un evento de actualización de datos recogidos por el dispositivo IoT.
+
+    - Captura notificación: El cliente mantiene un demonio de captura de notificaciones de cualquier tipo, como fallo en la medición y reenvio de datos, u otro tipo de avisos.
+    
+    - Proceso I/O: El dispositivo IOT procesa los datos que debe recoger del paciente con varios niveles de redundacia y los envía al proceso de generación de actualizaciones.
+
 - **Cliente - Paciente general**:
 
+    - Petición consulta: Se envían al servidor de aplicaciones peticiones continuas que gestionará éste para cada tipo de servicio disponible.
+    
+    - Captura avisos: El cliente mantiene activo un demonio de captura de notificaciones, esto incluye tanto notificaciones del doctor, como actualización de citas y otros avisos.
+
+    - Captura stream multimedia: Este cliente tiene un servicio de sincronización multimedia en tiempo real para las consultas personales con el doctor en tiempo real. No debe tener especial resolución sino más bien permitir comunicaciones con el médico que atienda dicha consulta.
+
 - **Cliente - Médico especialista**:
+    
+    - Petición seguimiento: Se envían al servidor de aplicaciones peticiones de forma continuada que éste gestionará para cada tipo de servicio. El doctor tiene acceso a diferentes consultas como son las de ver el historial del paciente o atender consultas.
+    
+    - Petición notificación: El cliente del médico podrá enviar mediante este servicio notificaciones a sus pacientes de forma asíncrona.
 
 - **Servidor Apps**:
+    
+    - Servicio streaming multimedia: Corresponde con el servicio de sincronización multimedia en tiempo real para encauzar las llamadas de este tipo.
+    
+    - Demonio captura de peticiones: Servicio de captura para la recepción de peticiones por parte de clientes para realizar actualziaciones, inserciones o descarga a la base de datos (para lo que se debe conectar previamente al brooker, el evento de petición se propaga por la infraestructura). Además se encargará de identificar anomalías en los datos de dispositivos IoT de llegada de los pacientes para poder desencadenar alertas y emergencias.
+    
+    - Demonio captura de notificaciones: El servidor de aplicaciones dispone de otro servicio para la recepción de peticiones por parte de clientes que relaciona notificaciones de forma asíncrona.
+    
+    - Servicio de envío de comunicaciones: El servidor envía diferentes tipos de eventos de notificaciones a las aplicaciones cliente. Se realiza de forma asíncrona y es otro servicio diferente del de captura.
+    
+    - Servicio de envío de emergencias: El servidor dispone de un demonio críticoque redirige las alertas de emergencia con prioridad máxima al broker. 
+
+
+En el segundo diagrama se pueden observar de nuevo cinco columnas, a continuación se van a describir los siguientes estados desplegados por cada columna. 
+
 
 - **Procesos Broker**:
+   
+   - Orquestador de servicios: Lleva el control de todos los procesos implicados en realizar una tarea y coordina la dirección de destino de las diferentes operaciones para llevarlas a la máquina que corresponda. Se encapsulan las direcciones y se llevan al adaptador de contexto que ya redirige a cada base de datos. Si la comunicación es de vuelta al servidor de aplicaciones también se encarga de encauzarla. Etiqueta de prioridad los eventos de emergencia para procesarlos cuanto antes y encaminarlos al CEP.
+   
+   - Adaptador de contexto: Filtra del orquestador de servicios aquellas direcciones que deben ir a bases de datos, así como las de emergencia que van a la máquina de CEP pasando por el procesamiento en tiempo real.
+   
+   - Procesamiento en tiempo real: Es el que se encargará de tener un protocolo de comunicaciones especial con el CEP para procesar emergencias. Este proceso es crítico y tiene que estar activo 24h.
 
 - **Procesos CEP**:
+    - Proceso CEP: Es el proceso principal del CEP, además de encargarse de las comunicaicones con el brooker, es un proceso crítico que debe estar activo 24h ya que se encarga de calcular las direcciones de los eventos de emergencia de forma que todos los actores de una emergencia reciban cuanto antes la notificación. Con los paquetes de datos que lleguen calculará la geolocalización de las ambulancias así como el tiempo estimado de llegada a la emergencia.
 
 - **Procesos Big Data**:
 
-- **Procesos Open Data**:
+    - Preproceso de Análisis de Datos y Machine Learning: Análisis de los datos de forma masiva en el servidor Big Data, extracción de características inteligentes de patrones de datos y filtrado de datos para resultados no personales para dejarlos preparados para el servidor de Open Data y que cumpla las regulaciones judicales al respecto de la privacidad.
+    
+    - Proceso de Acceso a las distintas BBDD: Cada base de datos tiene un proceso que se encarga de gestionar a bajo nivel la inserción, actualización y descarga de datos. Tanto entra como salida. 
 
-- **Procesos Sensores Madrid**:
+- **Procesos Open Data**: En la máquina del servidor de Open Data deben estar levantados los procesos del servidor web para tanto mostrar los datos como el de actualización de dichos datos, por lo que debe estar actualizado con la base de datos Big Data. En concreto recibe de la máquina Big Data los datos procesados y no personales de las interacciones con el sistema para ofrecer a investigadores datos cruzados relativos a emergencias, enfermedades, tratamientos y contaminación, entre otros.
+
+- **Procesos Sensores Madrid**: Este proceso corresponde a la máquina del ayuntamiento de Madrid que se encargará de subir los datos a nuestro servicio Big Data, se comunica con el Brooker. Una alternativa a esta opción era incluir un web scrapper que fuese recogiendo de forma automática cada indicador de contaminante o usar una API para ello. De cualquier forma al estar contectado con el broker, el servicio se hace escalable o sustituible por una alternativa fácilmente.
 
 #### 4.2.5 Rationale
 
+En la vista de procesos que hemos realizado, se ven reflejados casi todos los atributos de calidad del sistema considerados:
+
+1. La disponibilidad tanto crítica como no crítica se ve reflejada en los procesos de capturas de emergencias y captura de peticiones sin prioridad.
+
+2. Se presuponen todas las comunicaicones cifradas de forma que el atributo de calidad de seguridad está incluido en esta vista.
+
+3. El rendimiento no es especialmente importante en el broker pero sí para las peticiones de emergencia, por ello se filtran y expanden por el sistema con prioridad máxima.
+
+4. La escalabilidad queda reflejada también porque el desarrollo del sistema es modular y cada máquina contempla diferentes módulos que pueden crecer. Además en caso de ser el broker cuello de botella, siempre se podrán dedicar más recursos a esta parte y ganar en rendimiento.
 
 
 ### 4.3 Vista de desarrollo 
@@ -324,6 +383,7 @@ Cliente paciente crónico: Cliente que usa la aplicación con el sistema de aler
 - **Brokers**: Encargado de comunicar las diferentes partes del sistema entre sí.- **Servidor Madrid - Datos ambientales**: Servidor externo a nuestro sistema pero con el que nos comunicamos para obtener datos (temperatura, humedad, niveles de polución, niveles de alergenos…) que usamos en nuestro sistema.
 - **Big Data server**: base de datos global que almacena la información de toda la aplicación.
 - **Open data service**: servidor encargado de la analitica de los datos y estadisticas referente a la aplicación.
+- **Servidor Aplicaciones**: Servidor encargado de otorgar servicio a los clientes así como de comunicar con el Broker las peticiones de todos los servicios a las bases de datos y las emergencias.
 
 #### 4.4.5 Rationale
 
@@ -436,8 +496,10 @@ Para cada par de vistas, se detalla en una tabla la correspondencia entre elemen
 ![Desarrollo / Escenarios](DESARROLLO-ESCENARIOS.PNG){height=60%}
 
 #### 5.1.8 Procesos / Despliegue
+![Despliegue / Procesos](DESPLIEGUE_PROCESOS_TABLA.PNG){height=60%}
 
 #### 5.1.9 Procesos / Escenarios
+![Procesos / Escenarios](escenario_procesos_tabla.PNG){height=150%}
 
 #### 5.1.10 Despliegue / Escenarios
 ![Despliegue / Escenario](DESPLIEGUE-ESCENARIOS.PNG){height=60%}
@@ -464,13 +526,13 @@ Atributos de calidad | Vista lógica | Vista de procesos | Vista de desarrollo |
 ---               | --- | --- | --- | --- | ---
 Disponibilidad    | x |   | x | x | 
 Usabilidad        | x |   |   |   | x
-Seguridad         |   |   | x | x | x
+Seguridad         |   | x | x | x | x
 Interoperabilidad |   |   |   | x |
-Rendimiento       | x |   | x | x |
-Escalabilidad     |   |   | x |   |
+Rendimiento       | x | x | x | x |
+Escalabilidad     |   | x | x |   |
 Portabilidad      |   |   |   | x |
-Mantenibilidad    |   |   |   | x |
-Modificabilidad   |   |   |   |   |
+Mantenibilidad    |   | x | x | x |
+Modificabilidad   |   | x | x |   |
 
 
 ## 6. Conclusiones
