@@ -10,7 +10,9 @@ Práctica de Arquitectura y Diseño Software de la ETSISI, UPM, Madrid 3º Curso
     * Imágenes formato png ya recortadas y nombradas por orden de aparición.
     * Diagramas dejar el esquema original y usar draw.io para poder modificarlo.
     
-## Faltan
+## Contact
 
-* Subir a partir del punto 4
+- **Para los que nos evalúan**
+
+* Subir issue y etiquetar a lmataa o correo a l.mataa@alumnos.upm.es
 
